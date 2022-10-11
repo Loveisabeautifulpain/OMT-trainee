@@ -55,3 +55,10 @@ if ($tab != '')
     }
 </style>
 <script src="<?php echo $_DOMAIN; ?>js/form.js"></script>
+<script src="<?php echo $_DOMAIN; ?>ckeditor/ckeditor.js"></script>
+<script>
+    config = {};
+    config.entities_latin = false;
+    config.language = "vi";
+    CKEDITOR.replace("body_edit_post", config);
+</script>

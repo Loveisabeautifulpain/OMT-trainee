@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2022 at 06:45 AM
+-- Generation Time: Oct 11, 2022 at 10:07 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -61,6 +61,56 @@ INSERT INTO `categories` (`id_cate`, `label`, `url`, `type`, `sort`, `parent_id`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `images`
+--
+
+CREATE TABLE `images` (
+  `id_img` int(11) NOT NULL,
+  `url` text COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `size` int(11) NOT NULL,
+  `date_uploaded` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id_post` int(11) NOT NULL,
+  `title` text COLLATE utf8_unicode_ci NOT NULL,
+  `descr` text COLLATE utf8_unicode_ci NOT NULL,
+  `url_thumb` text COLLATE utf8_unicode_ci NOT NULL,
+  `slug` text COLLATE utf8_unicode_ci NOT NULL,
+  `keywords` text COLLATE utf8_unicode_ci NOT NULL,
+  `body` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `cate_1_id` int(11) NOT NULL,
+  `cate_2_id` int(11) NOT NULL,
+  `author_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `view` int(11) NOT NULL,
+  `date_posted` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id_post`, `title`, `descr`, `url_thumb`, `slug`, `keywords`, `body`, `cate_1_id`, `cate_2_id`, `author_id`, `status`, `view`, `date_posted`) VALUES
+(1, 'Iphone 14 serie cháy hàng trong ngày mở đặt trước', '', '', 'iphone-14-serie-chay-hang-trong-ngay-mo-dat-truoc', '', '', 0, 0, 2, 0, 0, '2022-10-11 13:55:24'),
+(2, 'Kẻ trộm Bitcoin từ tay FBI', '', '', 'ke-trom-bitcoin-tu-tay-fbi', '', '', 0, 0, 2, 0, 0, '2022-10-11 14:15:13'),
+(3, '4 tuần với Galaxy Z Flip4 Trải nghiệm gói gọn trong chữ “Gập”', 'Điện thoại gập rõ ràng là để “gập”. Đặc biệt khi Galaxy Z Flip4 đã được tinh chỉnh lại nhiều khía cạnh để mang lại trải nghiệm hoàn thiện hơn.', 'https://genk.vn/4-tuan-voi-galaxy-z-flip4-trai-nghiem-goi-gon-trong-chu-gap-20221006120515284.chn', '4-tuan-voi-galaxy-z-flip4-trai-nghiem-goi-gon-trong-chu-“gap”', 'gập', '&lt;p&gt;Điện thoại gập rõ ràng là để &amp;ldquo;gập&amp;rdquo;. Đặc biệt khi Galaxy Z Flip4 đã được tinh chỉnh lại nhiều khía cạnh để mang lại trải nghiệm hoàn thiện hơn.&lt;/p&gt;', 1, 6, 1, 0, 0, '2022-10-11 14:15:39'),
+(4, 'Đánh giá nhanh ổ cứng SSD NVMe WD_BLACK SN850 dành cho PS5', 'đánh giá ổ cứng', 'https://genk.vn/danh-gia-nhanh-o-cung-ssd-nvme-wdblack-sn850-danh-cho-ps5-van-thuoc-hang-dau-bang-nhung-duoc-dan-them-logo-playstation-tren-hop-20221006153626673.chn', 'danh-gia-nhanh-o-cung-ssd-nvme-wdblack-sn850-danh-cho-ps5', 'ổ cứng', '&lt;p&gt;Dù đã ra mắt được gần hai năm với khe cắm mở rộng NVMe PCIe 4.0 sẵn sàng, chỉ đến cuối tháng 05/2022, Sony mới chính thức ra mắt bản cập nhật phần mềm hệ thống hỗ trợ thêm ổ SSD NVMe gắn trong. Điều này cũng đồng thời mở ra một thị trường mới cho các nhà sản xuất thiết bị lưu trữ.&lt;/p&gt;', 2, 0, 1, 0, 0, '2022-10-11 14:15:50'),
+(8, 'test', 'test', 'https://www.w3schools.com', 'test', 'test', '&lt;p&gt;test&lt;/p&gt;', 1, 6, 2, 0, 0, '2022-10-11 14:30:05'),
+(9, 'test2', 'aaaa', 'https://genk.vn/danh-gia-nhanh-o-cung-ssd-nvme-wdblack-sn850-danh-cho-ps5-van-thuoc-hang-dau-bang-nhung-duoc-dan-them-logo-playstation-tren-hop-20221006153626673.chn', 'test2', 'a', '&lt;p&gt;aaaaaaaaaaaaaa&lt;/p&gt;', 5, 14, 2, 0, 0, '2022-10-11 14:30:10'),
+(10, 'test3', 'mo tả', 'https://genk.vn/danh-gia-nhanh-o-cung-ssd-nvme-wdblack-sn850-danh-cho-ps5-van-thuoc-hang-dau-bang-nhung-duoc-dan-them-logo-playstation-tren-hop-20221006153626673.chn', 'test3', 'a', '&lt;p&gt;a&lt;/p&gt;', 4, 11, 2, 0, 0, '2022-10-11 14:30:19'),
+(11, 'test4', 'mô tả', 'https://genk.vn/danh-gia-nhanh-o-cung-ssd-nvme-wdblack-sn850-danh-cho-ps5-van-thuoc-hang-dau-bang-nhung-duoc-dan-them-logo-playstation-tren-hop-20221006153626673.chn', 'test4', 'mô tả', '&lt;p&gt;dfnjdnglangnalwgnlkaw&lt;/p&gt;', 3, 8, 2, 0, 0, '2022-10-11 14:30:25');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -100,6 +150,18 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id_cate`);
 
 --
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id_img`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id_post`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -114,6 +176,18 @@ ALTER TABLE `users`
 --
 ALTER TABLE `categories`
   MODIFY `id_cate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
