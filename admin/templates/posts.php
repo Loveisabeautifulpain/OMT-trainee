@@ -139,7 +139,7 @@ echo '
             </div>
             <div class="form-group">
                 <label>Mô tả bài viết</label>
-                <textarea id="desc_edit_post" class="form-control">' . $data_post['desc'] . '</textarea>
+                <textarea id="desc_edit_post" class="form-control">' . $data_post['descr'] . '</textarea>
             </div>
             <div class="form-group">
                 <label>Từ khoá bài viết</label>
