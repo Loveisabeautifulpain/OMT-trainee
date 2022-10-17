@@ -11,7 +11,7 @@ if ($user)
  // Hiển thị sidebar
 require_once 'templates/sidebar.php';
  
-// Hiển thị sidebar
+// Hiển thị content
 require_once 'templates/content.php';
 }
 // Nếu không đăng nhập

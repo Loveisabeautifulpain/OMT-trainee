@@ -315,7 +315,10 @@
                 </div>
             </div>
             <div class="section-mid">
-                mid
+                <div class="flx justifySB">
+                    <div class="bigLeft">left</div>
+                    <div class="bigRight">right</div>
+                </div>
             </div>
         </div>
     </div>
@@ -358,12 +361,13 @@
     .bottom-header a.logo-genk {
     width: 150px;
     height: 45px;
-    top: 20px;
+    top: 12px;
     position: absolute;
     }
     @media only screen and (max-width: 768px) {
         .bottom-header a.logo-genk{
             left:0;
+            width:100px;
         }
         .menu-list{
             margin-left: 15%;
@@ -371,14 +375,14 @@
         .menu-list .menu-li:first-child {
             margin-left:0;
         }
+        .canle {
+            margin-left:10px;
+            margin-right:10px;
+        }        
     }
-    @media (min-width: 1200px){
-        .list-news-top{
-            flex: 1;
-            column-gap: 15px;
-        }
-        .section-top .flx>* {
-        flex: 1;
+    @media only screen and (min-width: 768px){
+        .bigRightLeft{
+            width:265px;
         }
     }
     .top-header {
@@ -494,9 +498,6 @@
     width: 560px;
     max-width: 100%;
     padding-left: 10px;
-}
-.bigRightLeft{
-    width:265px;
 }
 .news-top-right{
     margin-top: 18px;
@@ -629,6 +630,9 @@ h3 {
 }
 .midthumb {
     display:block;
+}
+h4 a {
+    font-size: 17px;
 }
 </style>
 
