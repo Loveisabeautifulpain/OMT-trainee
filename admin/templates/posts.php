@@ -48,10 +48,83 @@ if ($user)
                 <input type="text" class="form-control title" id="title_add_post">
             </div>
             <div class="form-group">
-                <label>URL chuyên mục</label>
+                <label>Trạng thái bài viết</label>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="stt_add_post" value="1"> Xuất bản
+                    </label>
+                </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="stt_add_post" value="0"> Ẩn
+                </label>
+            </div>
+            </div>
+            <div class="form-group">
+                <label>Slug bài viết</label>
                 <input type="text" class="form-control slug" placeholder="Nhấp vào để tự tạo" id="slug_add_post">
             </div>
             <div class="form-group">
+                <label>Url thumbnail</label>
+                <input type="text" class="form-control" id="url_thumb_add_post">
+            </div>
+            <div class="form-group">
+                <label>Mô tả bài viết</label>
+                <textarea id="desc_add_post" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Từ khoá bài viết</label>
+                <input type="text" class="form-control" id="keywords_add_post">
+            </div>
+            <div class="form-group cate_post_1">
+                <label>Chuyên mục lớn</label>
+                <select class="form-control" id="cate_post_1">
+';
+ 
+            // Tải chuyên mục lớn bài viết
+            $sql_get_cate_post_1 = "SELECT label, id_cate FROM categories WHERE type = '1'";
+            if ($db->num_rows($sql_get_cate_post_1)) {
+                if ($data_post['cate_1_id'] == '0') {
+                    echo '<option value="">Vui lòng chọn chuyên mục</option>';
+                }
+                foreach ($db->fetch_assoc($sql_get_cate_post_1, 0) as $key => $data_cate_1) {
+                        echo '<option value="' . $data_cate_1['id_cate'] . '">' . $data_cate_1['label'] . '</option>';
+                    }
+                }
+             else {
+                echo '<option value="">Chưa có chuyên mục lớn nào</option>';
+            }
+            
+            echo '
+            
+                            </select>
+                        </div>
+                        <div class="form-group cate_post_2">
+                            <label>Chuyên mục vừa</label>
+                            <select class="form-control" id="cate_post_2">
+            ';
+ 
+        // Tải chuyên mục vừa bài viết
+        $sql_get_cate_post_2 = "SELECT label, id_cate FROM categories WHERE type = '2' AND parent_id = '$data_post[cate_1_id]'";
+        if ($db->num_rows($sql_get_cate_post_2)) {
+            if ($data_post['cate_2_id'] == '0') {
+                echo '<option value="">Vui lòng chọn chuyên mục</option>';
+            }
+            foreach ($db->fetch_assoc($sql_get_cate_post_2, 0) as $key => $data_cate_2) {
+                    echo '<option value="' . $data_cate_2['id_cate'] . '">' . $data_cate_2['label'] . '</option>';
+                }
+            }
+         else {
+            echo '<option value="">Chưa có chuyên mục vừa nào</option>';
+        }
+        echo '
+        </select>
+        </div>
+        <div class="form-group">
+                <label>Nội dung bài viết</label>
+                <textarea id="body_add_post" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
                 <button type="submit" class="btn btn-primary">Tạo</button>
             </div>
             <div class="alert alert-danger hidden"></div>

@@ -61,4 +61,5 @@ if ($tab != '')
     config.entities_latin = false;
     config.language = "vi";
     CKEDITOR.replace("body_edit_post", config);
+    CKEDITOR.replace("body_add_post", config);
 </script>

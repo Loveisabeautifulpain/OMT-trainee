@@ -456,11 +456,18 @@ $('#formUpImg').submit(function(e) {
 });
 
 // Thêm bài viết
-$('#formAddPost button').on('click', function() {
+$('#formAddPost button').on('click', function(e) {
+    e.preventDefault();
     $title_add_post = $('#title_add_post').val();
     $slug_add_post = $('#slug_add_post').val();
- 
-    if ($title_add_post == '' || $slug_add_post == '') {
+    $stt_add_post = $('#formAddPost input[name="stt_add_post"]:radio:checked').val();
+    $url_thumb_add_post = $('#url_thumb_add_post').val();
+    $desc_add_post = $('#desc_add_post').val();
+    $keywords_add_post = $('#keywords_add_post').val();
+    $cate_1_add_post = $('#cate_post_1').val();
+    $cate_2_add_post = $('#cate_post_2').val();
+    $body_add_post = CKEDITOR.instances['body_add_post'].getData();
+    if ($title_add_post == '' || $slug_add_post == '' || $stt_add_post == '' || $url_thumb_add_post == '' || $keywords_add_post == '' || $cate_1_add_post == '' || $desc_add_post == '') {
         $('#formAddPost .alert').removeClass('hidden');
         $('#formAddPost .alert').html('Vui lòng điền đầy đủ thông tin.');
     } else {
@@ -470,6 +477,13 @@ $('#formAddPost button').on('click', function() {
             data : {
                 title_add_post : $title_add_post,
                 slug_add_post : $slug_add_post,
+                stt_add_post: $stt_add_post,
+                url_thumb_add_post: $url_thumb_add_post,
+                desc_add_post: $desc_add_post,
+                keywords_add_post: $keywords_add_post,
+                body_add_post: $body_add_post,
+                cate_1_add_post: $cate_1_add_post,
+                cate_2_add_post: $cate_2_add_post,
                 action : 'add_post'
             }, success : function(data) {
                 $('#formAddPost .alert').html(data);

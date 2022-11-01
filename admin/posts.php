@@ -18,7 +18,13 @@ if ($user)
             // Xử lý các giá trị
             $title_add_post = trim(addslashes(htmlspecialchars($_POST['title_add_post'])));
             $slug_add_post = trim(addslashes(htmlspecialchars($_POST['slug_add_post'])));
- 
+            $stt_add_post =  trim(addslashes(htmlspecialchars($_POST['stt_add_post'])));
+            $url_thumb_add_post =  trim(addslashes(htmlspecialchars($_POST['url_thumb_add_post'])));
+            $desc_add_post =  trim(addslashes(htmlspecialchars($_POST['desc_add_post'])));
+            $keywords_add_post =  trim(addslashes(htmlspecialchars($_POST['keywords_add_post'])));
+            $cate_1_add_post =  trim(addslashes(htmlspecialchars($_POST['cate_1_add_post'])));
+            $cate_2_add_post =  trim(addslashes(htmlspecialchars($_POST['cate_2_add_post'])));
+            $body_add_post =  trim(addslashes(htmlspecialchars($_POST['body_add_post'])));
             // Các biến xử lý thông báo
             $show_alert = '<script>$("#formAddPost .alert").removeClass("hidden");</script>';
             $hide_alert = '<script>$("#formAddPost .alert").addClass("hidden");</script>';
@@ -42,19 +48,17 @@ if ($user)
                 else
                 {
                     // Thực thi thêm bài viết
-                    $sql_add_post = "INSERT INTO posts VALUES (
-                        '',
+                    $sql_add_post = "INSERT INTO posts (title, descr, url_thumb, slug, keywords, body, cate_1_id, cate_2_id, author_id, status, view, date_posted) VALUES (
                         '$title_add_post',
-                        '',
-                        '',
+                        '$desc_add_post',
+                        '$url_thumb_add_post',
                         '$slug_add_post',
-                        '',
-                        '',
-                        '',
-                        '',
-                        '',
+                        '$keywords_add_post',
+                        '$body_add_post',
+                        '$cate_1_add_post',
+                        '$cate_2_add_post',
                         '$data_user[id_acc]',
-                        '0',
+                        '$stt_add_post',
                         '0',
                         '$date_current'
                     )";

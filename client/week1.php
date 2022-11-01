@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -315,9 +316,61 @@
                 </div>
             </div>
             <div class="section-mid">
-                <div class="flx justifySB">
-                    <div class="bigLeft">left</div>
-                    <div class="bigRight">right</div>
+                <div>
+                    <div class="news-wrapper">
+                        <ul style="padding-left:0px;">
+                        <?php
+                        require_once '../admin/classes/DB.php';
+                        $db = new Database();
+                        $db->connect();
+                        $db->set_char('utf8');
+                        $sql_get_list_post = "SELECT * FROM posts ORDER BY id_post DESC";
+                        foreach ($db->fetch_assoc($sql_get_list_post, 0) as $key => $data_post) {
+                            $sql_get_author = "SELECT display_name FROM users WHERE id_acc = '$data_post[author_id]'";
+                            $data_author = $db->fetch_assoc($sql_get_author, 1);
+                            $author_post = $data_author['display_name'];
+                            $sql_check_id_cate_2 = "SELECT label, id_cate FROM categories WHERE id_cate = '$data_post[cate_2_id]' AND type = '2'";
+                            $data_cate_2 = $db->fetch_assoc($sql_check_id_cate_2, 1);
+                            if ($db->num_rows($sql_check_id_cate_2)) {
+                            $cate_post = $data_cate_2['label'];
+                            } else {
+                                $cate_post = "chưa phân loại";
+                            }
+                            echo'
+                            <li class="clearfix">
+                            <div class="another-left">
+                                <a  class="another">';
+                                echo'<img src="../upload/images/anh'.$data_post['id_post'].'.webp">';
+                                echo'
+                                </a>
+                            </div>';
+                            echo'
+                            <div class="another-right">
+                                <div class="another-type">
+                                    <a>
+                                        '.$cate_post.'
+                                    </a>
+                                </div>';
+                                echo'
+                                <div class="another-title">
+                                    <h4>
+                                        <a href=#
+                                        </a>
+                                    </h4>
+                                </div>';
+                                echo'
+                                <span class="another-desc">'
+                                    .$data_post['descr'].'
+                                </span>
+                                <div class="another-time">
+                                    '.$author_post.'
+                                </div>
+                            </div>
+                        </li>';
+                        }
+                        ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -395,6 +448,7 @@
         display: block;
         position: fixed;
         width:100%;
+        z-index: 999;
     }
     .channelvn {
         float:left;
@@ -633,6 +687,51 @@ h3 {
 }
 h4 a {
     font-size: 17px;
+}
+.another {
+    height: auto;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    border-radius:4px;
+}
+.news-wrapper a img{
+    width:100%;
+    width:260px;
+    height:162px;
+}
+.section-mid{
+    padding-bottom:25px;
+}
+.news-wrapper .another-right {
+    margin-left:290px;
+}
+.another-type a {
+    font: normal 16px SFPD-Regular;
+    color: #aaa;
+    margin-bottom: 5px;
+    display: block;
+    letter-spacing: .2px;
+}
+.news-wrapper {
+    padding-top:30px;
+}
+.news-wrapper ul li {
+    border-bottom: 1px dashed #e5e5e5;
+    padding:25px 0;
+}
+.another-left {
+    position: relative;
+    width:270px;
+    float: left;
+}
+.another-desc {
+    margin-top: 5px;
+    font: normal 13px/150% SFPD-Regular;
+    letter-spacing: .2px;
+    display: block;
+    color: #888;
+    margin-bottom: 5px;
 }
 </style>
 
